@@ -13,6 +13,10 @@
     - php bin/console make:migration (créer la migration)
     - php bin/console doctrine:migrations:migrate (update bdd)
 
+    Création Activity
+    - php bin/console make:entity Activity
+
+    Création Formulaires
 ## Lancer le projet Symfony
 
     - symfony server:start

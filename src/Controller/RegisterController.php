@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Form\RegisterFormType;
@@ -12,6 +13,14 @@ use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 
 class RegisterController extends AbstractController
 {
+    private $passwordHasher;
+
+    // Hash password
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+    
     #[Route('/register', 'registration')]
     public function register(Request $request, PersistenceManagerRegistry $doctrine): Response
     {
@@ -26,13 +35,16 @@ class RegisterController extends AbstractController
             // $userForm->getData() holds the submitted values
             // but, the original `$user` variable has also been updated
 
+            $user->setRoles(['ROLE_USER']);
+
+            // Hashing the password
+            $user->setPassword($this->passwordHasher->hashPassword($user, $user->getPassword()));
+
             // Save the user to the database
             $user = $userForm->getData();
             $entityManager = $doctrine->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-
-            // ... perform some action, such as saving the task to the database
 
             return $this->redirectToRoute('register_success');
         }
