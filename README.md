@@ -3,10 +3,15 @@
     - symfony new <nom-du-projet> --version="6.2.*" --webapp
     - cd <nom-du-projet>
 
-### Modifier le lien vers la BDD
+### Création / Modification BDD
 
+    - php bin/console d:d:c
     - DATABASE_URL => .env.dev.local
 
+    Création User
+    - php bin/console make:entity User
+    - php bin/console make:migration (créer la migration)
+    - php bin/console doctrine:migrations:migrate (update bdd)
 
 ## Lancer le projet Symfony
 
