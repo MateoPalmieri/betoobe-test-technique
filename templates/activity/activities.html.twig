@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activities{% endblock %}
+
+{% block body %}
+    <h1>All activities</h1>
+
+    <ul>
+        {% for activity in activities %}
+            <li>
+                <h3>{{ activity.name }}</h3>
+                <p>{{ activity.getStartDate()|date('Y-m-d') }} to {{ activity.getEndDate|date('Y-m-d') }}</p>
+                <p>Places disponibles : {{ activity.getMaxUser() }}</p>
+                {# {% if app.user %}
+                    {% if activity.isParticipant(app.user) %}
+                        <p>Vous êtes inscrit à cette activité.</p>
+                        <a href="{{ path('activity_cancel_registration', {'id': activity.id}) }}">Annuler l'inscription</a>
+                    {% elseif activity.hasAvailableSlots %}
+                        <a href="{{ path('activity_register', {'id': activity.id}) }}">S'inscrire</a>
+                    {% else %}
+                        <p>Plus de places disponibles.</p>
+                    {% endif %}
+                {% endif %} #}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

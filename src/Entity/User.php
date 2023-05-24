@@ -37,6 +37,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $birthdate = null;
 
+    #[ORM\ManyToOne(inversedBy: 'user')]
+    private ?Activity $activity = null;
+
+    // #[ORM\ManyToOne(inversedBy: 'relation')]
+    // private ?Activity $activite = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -139,6 +145,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setBirthdate(\DateTimeInterface $birthdate): self
     {
         $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    public function getActivity(): ?Activity
+    {
+        return $this->activity;
+    }
+
+    public function setActivity(?Activity $activity): self
+    {
+        $this->activity = $activity;
 
         return $this;
     }
