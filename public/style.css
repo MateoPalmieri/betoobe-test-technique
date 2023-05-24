@@ -1,0 +1,211 @@
+/* Buttons */
+a {
+    color: #0366d6;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: white;
+}
+
+a:focus {
+    outline: none;
+    color: white;
+}
+
+a:active {
+    color: white;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0366d6;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button-link:hover {
+    background-color: #0645ad;
+}
+
+.button-link:focus {
+    outline: none;
+    background-color: #0645ad;
+}
+
+.button-link:active {
+    background-color: #0366d6;
+}
+
+
+/* Activities */
+.activity-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.activity-list-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+  
+.activity-list-item:last-child {
+    border-bottom: none;
+}
+  
+.activity-list-item:hover {
+    background-color: #f0f0f0;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container label {
+    text-align: center;
+}
+
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+form input[type="email"],
+form input[type="password"] {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+form .error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+/* Login */
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.login-form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.login-form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.login-form .error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+/* Links */
+
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0366d6;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button-link:hover {
+    background-color: #0645ad;
+}
+
+.button-link:focus {
+    outline: none;
+    background-color: #0645ad;
+}
+
+.button-link:active {
+    background-color: #0366d6;
+}
+  

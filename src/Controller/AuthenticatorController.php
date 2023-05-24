@@ -12,9 +12,10 @@ class AuthenticatorController extends AbstractController
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        // If User already logged in, go back to activities
+        if ($this->getUser()) {
+            return $this->redirectToRoute('/activities');
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();

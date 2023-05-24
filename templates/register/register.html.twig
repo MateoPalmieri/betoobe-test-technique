@@ -2,14 +2,21 @@
 
 {% block title %}Registration{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="style.css" /> 
+{% endblock %}
+
 {% block body %}
 
-    <h1>Création de compte</h1>
+    <h2>Create an account</h2>
 
     {{ form_start(userForm) }}
         {{ form_widget(userForm) }}
 
-        <button type="submit">Créer un compte</button>
+        <button type="submit">Create account</button>
     {{ form_end(userForm) }}
+
+    <a href="/activities" class="button-link">activities</a>
+    <a href="/login" class="button-link">login</a>
 
 {% endblock %}

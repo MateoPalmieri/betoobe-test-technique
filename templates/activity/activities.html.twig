@@ -2,26 +2,29 @@
 
 {% block title %}Activities{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="style.css" /> 
+{% endblock %}
+
 {% block body %}
     <h1>All activities</h1>
 
     <ul>
         {% for activity in activities %}
-            <li>
+            <li class="activity-list">
                 <h3>{{ activity.name }}</h3>
-                <p>{{ activity.getStartDate()|date('Y-m-d') }} to {{ activity.getEndDate|date('Y-m-d') }}</p>
-                <p>Places disponibles : {{ activity.getMaxUser() }}</p>
-                {# {% if app.user %}
-                    {% if activity.isParticipant(app.user) %}
-                        <p>Vous êtes inscrit à cette activité.</p>
-                        <a href="{{ path('activity_cancel_registration', {'id': activity.id}) }}">Annuler l'inscription</a>
-                    {% elseif activity.hasAvailableSlots %}
-                        <a href="{{ path('activity_register', {'id': activity.id}) }}">S'inscrire</a>
-                    {% else %}
-                        <p>Plus de places disponibles.</p>
-                    {% endif %}
-                {% endif %} #}
+                <ul>{{ activity.getStartDate()|date('Y-m-d') }} to {{ activity.getEndDate|date('Y-m-d') }}</ul>
+                <ul>Places disponibles : {{ activity.getMaxUser() }}</ul>
+                {# TODO :
+                    If User logged in :
+                    - Possibility to be part of the activity
+                    - Possibility to quit the activity (if already in)
+                #}
             </li>
         {% endfor %}
     </ul>
+
+    <a href="/register" class="button-link">register</a>
+    <a href="/login" class="button-link">login</a>
+
 {% endblock %}

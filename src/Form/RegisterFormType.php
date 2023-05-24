@@ -18,7 +18,7 @@ class RegisterFormType extends AbstractType
             ->add('last_name')
             ->add('first_name')
             ->add('birthdate')
-        ;
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
