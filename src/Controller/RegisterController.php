@@ -32,9 +32,9 @@ class RegisterController extends AbstractController
 
         $userForm->handleRequest($request);
         if ($userForm->isSubmitted() && $userForm->isValid()) {
+
             // $userForm->getData() holds the submitted values
             // but, the original `$user` variable has also been updated
-
             $user->setRoles(['ROLE_USER']);
 
             // Hashing the password

@@ -13,7 +13,7 @@
         {% for activity in activities %}
             <li class="activity-list">
                 <h3>{{ activity.name }}</h3>
-                <ul>{{ activity.getStartDate()|date('Y-m-d') }} to {{ activity.getEndDate|date('Y-m-d') }}</ul>
+                <ul>{{ activity.getStartDate()|date('m-d-Y') }} to {{ activity.getEndDate|date('m-d-Y') }}</ul>
                 <ul>Minimum age required : {{ activity.minimumAge }}</ul>
                 <ul>Available places : {{ activity.getMaxUser() }}</ul>                
 
@@ -24,7 +24,7 @@
                         {% else %}
                             <a href="/activity/register/{{ activity.id }}" class="button-link">Be part of this activity</a>
 
-                            {# TODO : Vérifier si l'activité correspond à celle du user #}
+                            {# TODO : Afficher uniquement si user inscrit à l'activité #}
                             {% if app.user %}
                                 <a href="/activity/cancel-registration/{{ activity.id }}" class="button-link">Quit this activity</a>
                             {% endif %}

@@ -12,12 +12,10 @@ use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 
 class ActivityController extends AbstractController
 {
-    /**
-     * @Route("/activities", name="activity_list")
-     */
     #[Route('/activities', 'activity_list')]
     public function list(PersistenceManagerRegistry $doctrine): Response
     {
+        // Get all activities
         $activities = $doctrine->getRepository(Activity::class)->findAll();
 
         return $this->render('activity/activities.html.twig', [

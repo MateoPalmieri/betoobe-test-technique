@@ -31,7 +31,7 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/approve/{id}', 'admin_approve')]
-    public function approve(Request $request, User $user, PersistenceManagerRegistry $doctrine, $id): Response
+    public function approve(User $user, PersistenceManagerRegistry $doctrine, $id): Response
     {
         $userRepository = $doctrine->getRepository(User::class);
 

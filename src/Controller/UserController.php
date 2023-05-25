@@ -16,9 +16,6 @@ class UserController extends AbstractController
         $this->security = $security;
     }
 
-    /**
-     * @Route("/user", name="user_profile")
-     */
     #[Route('/user', 'user_profile')]
     public function profile(): Response
     {
