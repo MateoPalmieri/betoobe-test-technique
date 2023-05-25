@@ -18,12 +18,15 @@ class AdminController extends AbstractController
         $userRepository = $doctrine->getRepository(User::class);
         $pendingUsers = $userRepository->findByStatus(0);
 
-        $activitiesUsers = $userRepository->findAll();
+        $allUsers = $doctrine->getRepository(User::class)->findAll();
+
+        // $activities = $doctrine->getRepository(Activity::class)->findAll();
 
         // Render the list of pending users
         return $this->render('admin/users.html.twig', [
             'pendingUsers' => $pendingUsers,
-            'activities' => $activitiesUsers,
+            'allUsers'     => $allUsers,
+            // 'activities' => $activities,
         ]);
     }
 

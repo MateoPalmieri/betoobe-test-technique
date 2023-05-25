@@ -10,12 +10,6 @@
 
     <h2>Create an account</h2>
 
-    {# {{ form_start(userForm) }}
-        {{ form_widget(userForm) }}
-
-        <button type="submit">Create account</button>
-    {{ form_end(userForm) }} #}
-
     <form action="{{ path('register') }}" method="post">
 
         {{ form_row(userForm.email) }}

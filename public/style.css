@@ -208,4 +208,8 @@ form .error-message {
 .button-link:active {
     background-color: #0366d6;
 }
-  
+
+
+.avertissement {
+    color: red;
+}

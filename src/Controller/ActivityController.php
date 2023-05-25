@@ -29,23 +29,29 @@ class ActivityController extends AbstractController
     public function register(PersistenceManagerRegistry $doctrine, $id): Response
     {
 
-        // var_dump($id);
         // Get the current user
         $user = $this->getUser();
 
         // Get the activity id
         $activity = $doctrine->getRepository(Activity::class)->find($id);
 
-        // Verify if activity exist
+        // Get the available places
+        $maxUser = $activity->getMaxUser();
+
+        // Verify if the activity exist
         if (!$activity) {
             throw $this->createNotFoundException('Activité non trouvée.');
+        }
+
+        // Verify if the activity still have available places
+        if ($maxUser == 0) {
+            return $this->redirectToRoute('activity_limit_reach');
         }
 
         // Associate user to activity
         $user->setActivity($activity);
 
         // Activity max_user decrease if someone join
-        $maxUser = $activity->getMaxUser();
         $activity->setMaxUser($maxUser - 1);
 
         // Save the informations
@@ -75,5 +81,11 @@ class ActivityController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('activity_list');
+    }
+
+    #[Route('/activity/limit', 'activity_limit_reach')]
+    public function activityLimitReach(): Response
+    {
+        return $this->render('activity/limit_reach.html.twig');
     }
 }

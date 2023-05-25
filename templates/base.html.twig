@@ -19,9 +19,10 @@
             <a href="{{ path('admin_users') }}" class="button-link">ADMIN</a>
         {% endif %}
 
-        <a href="/activities" class="button-link">activities</a>
+        <a href="/activities" class="button-link">Activities</a>
 
         {% if app.user %}
+            <a href="{{ path('user_profile') }}" class="button-link">My profile</a>
             <a href="{{ path('app_logout') }}" class="button-link">Log out</a>
             
             {% set currentDate = "now"|date("Y-m-d") %}

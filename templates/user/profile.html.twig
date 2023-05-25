@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My profile{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="style.css" /> 
+{% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+
+        <h1>My profile</h1>
+
+        {% if app.user.status == 0 %}<p class="avertissement"><b>! My account is not approved for now !</b></p>{% endif %}
+
+        <h3>Who Am I ?</h3>
+
+        <ul>
+            <li>I am {{ age }}</li>
+            <li>My name is {{ app.user.lastName }} {{ app.user.firstName }}</li>
+            <li>My email is {{ app.user.email }}</li>
+            <li>My role is {{ app.user.roles[0] }}</li>
+            
+        </ul>
+
+        {# <h3>My activities</h3>
+        <ul>
+            {% for activity in app.user.activity %}
+                <li>{{ app.user.activityId }}</li>
+            {% endfor %}
+            {% if app.user.activity == null %}
+                <p>No activity for now</p>
+            {% endif %}
+        </ul> #}
+        
+    {% endif %}
+
+{% endblock %}

@@ -34,20 +34,54 @@
         </tbody>
     </table>
 
+    <h1>All Users</h1>
+        <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in allUsers %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.email }}</td>
+                    {% if app.user == user %}<td><b>Myself</b></td>{% endif %}
+                    
+                    {# <td>{{ user.activity }}</td> #}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
     <h1>Users's activities</h1>
 
-    {% for activity in activities %}
-        {# <h2>{{ activity.name }}</h2> #}
+    {# {% for activity in activities %}
+        <h3>{{ activity.name }}</h3>
+        <ul>
+            {% for user in activity.user %}
+                <li>{{ user.firstName }} {{ user.lastName }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %} #}
+
+    {# {% for activity in activities %}
+        <h2>{{ activity.name }}</h2>
         <ul>
             {% for user in activity %}
                 <li>
                     {{ user.email }}
 
                     {% if user == app.user and is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('exclude_user', { 'activityId': activity.id, 'userId': user.id }) }}">Exclure</a>
+                        <a href="{{ path('exclude_user', { 'activityId': activity.id, 'userId': user.id }) }}">Exclusion</a>
                     {% endif %}
                 </li>
             {% endfor %}
         </ul>
-    {% endfor %}
+    {% endfor %} #}
 {% endblock %}
