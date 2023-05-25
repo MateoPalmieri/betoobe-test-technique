@@ -14,17 +14,35 @@
             <li class="activity-list">
                 <h3>{{ activity.name }}</h3>
                 <ul>{{ activity.getStartDate()|date('Y-m-d') }} to {{ activity.getEndDate|date('Y-m-d') }}</ul>
-                <ul>Places disponibles : {{ activity.getMaxUser() }}</ul>
-                {# TODO :
-                    If User logged in :
-                    - Possibility to be part of the activity
-                    - Possibility to quit the activity (if already in)
-                #}
+                <ul>Minimum age required : {{ activity.minimumAge }}</ul>
+                <ul>Available places : {{ activity.getMaxUser() }}</ul>                
+
+                {% if app.user %}
+                    {% if app.user.status == 1 %}
+                        {% if age < activity.minimumAge %}
+                            <a  class="button-link">Too young to be part of this activity</a>
+                        {% else %}
+                            <a href="/activity/register/{{ activity.id }}" class="button-link">Be part of this activity</a>
+
+                            {# TODO : Vérifier si l'activité correspond à celle du user #}
+                            {% if app.user %}
+                                <a href="/activity/cancel-registration/{{ activity.id }}" class="button-link">Quit this activity</a>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+
+                    {% if app.user.status == 0 %}
+                        <p><b>Please wait for an admin to approve your account</b></p>
+                    {% endif %}
+                {% endif %}
+
+                {% if app.user == false %}
+                    <a href="{{ path('app_login') }}" class="button-link">Please login to join an activity</a>
+                {% endif %}
+                
+                
             </li>
         {% endfor %}
     </ul>
-
-    {# <a href="/register" class="button-link">register</a>
-    <a href="/login" class="button-link">login</a> #}
 
 {% endblock %}

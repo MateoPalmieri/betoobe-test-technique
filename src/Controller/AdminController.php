@@ -16,28 +16,33 @@ class AdminController extends AbstractController
     {
         // Get all pending user registrations
         $userRepository = $doctrine->getRepository(User::class);
-        $pendingUsers = $userRepository->findAll();
+        $pendingUsers = $userRepository->findByStatus(0);
+
+        $activitiesUsers = $userRepository->findAll();
 
         // Render the list of pending users
         return $this->render('admin/users.html.twig', [
             'pendingUsers' => $pendingUsers,
+            'activities' => $activitiesUsers,
         ]);
     }
 
-    /**
-     * @Route("/admin/approve/{id}", name="admin_approve")
-     */
-    // public function approve(Request $request, User $user): Response
-    // {
-    //     // Set the user status to approved
-    //     $user->setStatus('approved');
+    #[Route('/admin/approve/{id}', 'admin_approve')]
+    public function approve(Request $request, User $user, PersistenceManagerRegistry $doctrine, $id): Response
+    {
+        $userRepository = $doctrine->getRepository(User::class);
 
-    //     // Save the updated user to the database
-    //     $entityManager = $this->getDoctrine()->getManager();
-    //     $entityManager->persist($user);
-    //     $entityManager->flush();
+        $user = $userRepository->find($id);
 
-    //     // Redirect back to the list of pending users
-    //     return $this->redirectToRoute('admin_users');
-    // }
+        // Set the user status to approved
+        $user->setStatus(1);
+
+        // Save the updated user to the database
+        $entityManager = $doctrine->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        // Redirect back to the list of pending users
+        return $this->redirectToRoute('admin_users');
+    }
 }

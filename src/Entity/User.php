@@ -40,8 +40,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'user')]
     private ?Activity $activity = null;
 
-    // #[ORM\ManyToOne(inversedBy: 'relation')]
-    // private ?Activity $activite = null;
+    #[ORM\Column]
+    private ?bool $status = null;
 
     public function getId(): ?int
     {
@@ -157,6 +157,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setActivity(?Activity $activity): self
     {
         $this->activity = $activity;
+
+        return $this;
+    }
+
+    public function isStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(bool $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

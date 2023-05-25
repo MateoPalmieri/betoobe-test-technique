@@ -2,6 +2,10 @@
 
 {% block title %}Admin User validation{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="style.css" /> 
+{% endblock %}
+
 {% block body %}
     <h1>User to validate / invalidate</h1>
 
@@ -21,12 +25,29 @@
                     <td>{{ user.id }}</td>
                     <td>{{ user.lastName }}</td>
                     <td>{{ user.firstName }}</td>
-                    {# <td>{{ user.email }}</td>
+                    <td>{{ user.email }}</td>
                     <td>
                         <a href="{{ path('admin_approve', {'id': user.id}) }}">Valider</a>
-                    </td> #}
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <h1>Users's activities</h1>
+
+    {% for activity in activities %}
+        {# <h2>{{ activity.name }}</h2> #}
+        <ul>
+            {% for user in activity %}
+                <li>
+                    {{ user.email }}
+
+                    {% if user == app.user and is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('exclude_user', { 'activityId': activity.id, 'userId': user.id }) }}">Exclure</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
 {% endblock %}

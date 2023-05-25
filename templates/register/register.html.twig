@@ -10,10 +10,27 @@
 
     <h2>Create an account</h2>
 
-    {{ form_start(userForm) }}
+    {# {{ form_start(userForm) }}
         {{ form_widget(userForm) }}
 
         <button type="submit">Create account</button>
-    {{ form_end(userForm) }}
+    {{ form_end(userForm) }} #}
+
+    <form action="{{ path('register') }}" method="post">
+
+        {{ form_row(userForm.email) }}
+
+        {{ form_row(userForm.last_name) }}
+
+        {{ form_row(userForm.first_name) }}
+
+        {{ form_row(userForm.password) }}
+
+        {{ form_row(userForm.birthdate, {'year': range(1950, 2030)}) }}
+
+        {{ form_row(userForm._token) }}
+
+        <button type="submit">Create account</button>
+    </form>
 
 {% endblock %}
