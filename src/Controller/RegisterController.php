@@ -21,7 +21,7 @@ class RegisterController extends AbstractController
         $this->passwordHasher = $passwordHasher;
     }
     
-    #[Route('/register', 'registration')]
+    #[Route('/register', 'register')]
     public function register(Request $request, PersistenceManagerRegistry $doctrine): Response
     {
         // // Create a new user object
