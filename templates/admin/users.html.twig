@@ -19,12 +19,12 @@
             {% for user in pendingUsers %}
                 <tr>
                     <td>{{ user.id }}</td>
-                    <td>{{ user.last_name }}</td>
-                    <td>{{ user.first_name }}</td>
-                    <td>{{ user.email }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.firstName }}</td>
+                    {# <td>{{ user.email }}</td>
                     <td>
                         <a href="{{ path('admin_approve', {'id': user.id}) }}">Valider</a>
-                    </td>
+                    </td> #}
                 </tr>
             {% endfor %}
         </tbody>

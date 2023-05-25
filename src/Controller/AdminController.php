@@ -11,10 +11,7 @@ use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 
 class AdminController extends AbstractController
 {
-    /**
-     * @Route("/admin/users", name="admin_users")
-     */
-    #[Route('/admin/users', 'admin_users')]
+    #[Route('/admin/users', 'admin_users', methods: ['GET'])]
     public function users(Request $request, PersistenceManagerRegistry $doctrine): Response
     {
         // Get all pending user registrations

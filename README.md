@@ -18,6 +18,9 @@
 
     Création Formulaires
     - php bin/console make:form
+
+    Login :
+    - php bin/console make:controller Login
 ### Lancer le projet Symfony
 
     - symfony server:start
