@@ -12,6 +12,11 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
+        {% if app.user %}
+            <a href="{{ path('app_logout') }}">Log out</a>
+        {% endif %}
+        
     </head>
     <body>
         {% block body %}{% endblock %}
